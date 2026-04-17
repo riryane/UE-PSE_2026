@@ -14,7 +14,7 @@
         $authorPrefix = strtoupper(substr($surname, 0, 3));
         $titlePrefix  = strtoupper(substr(trim($title), 0, 3));
         $randomNum    = str_pad(rand(0, 9999), 4, "0", STR_PAD_LEFT);
-        return $authorPrefix . $titlePrefix . $randomNum;
+        return $authorPrefix . "-" . $titlePrefix . "-" . $randomNum;
     }
 
     function bookIdExists($bookId) {

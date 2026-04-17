@@ -20,7 +20,7 @@
         $batchFormatted  = date("mdY", strtotime($batchDate));
         $expiryFormatted = date("mdY", strtotime($expirationDate));
         $randomNum       = str_pad(rand(0, 99999), 5, "0", STR_PAD_LEFT);
-        return $initials . $batchFormatted . $expiryFormatted . $randomNum;
+        return $initials . "-" . $batchFormatted . "-" . $expiryFormatted . "-" . $randomNum;
     }
 
     function drugIdExists($drugId) {
