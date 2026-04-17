@@ -11,11 +11,13 @@
     function generateDrugId($drugDescription, $batchDate, $expirationDate) {
         $words    = explode(" ", trim($drugDescription));
         $initials = "";
-        for ($i = 0; $i < 3 && $i < count($words); $i++) {
-            $initials .= strtoupper(substr($words[$i], 0, 1));
-        }
-        while (strlen($initials) < 3) {
-            $initials .= "X";
+        if (count($words) >= 2) {
+            $initials = strtoupper(substr($words[0], 0, 1) . substr($words[1], 0, 1));
+        } else {
+            $initials = strtoupper(substr($words[0], 0, 2));
+            if (strlen($initials) < 2) {
+                $initials .= "X";
+            }
         }
         $batchFormatted  = date("mdY", strtotime($batchDate));
         $expiryFormatted = date("mdY", strtotime($expirationDate));
